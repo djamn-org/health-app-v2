@@ -30,11 +30,11 @@ The HealthApp is a comprehensive health and fitness application that empowers us
 ## Getting Started
 ### Dependencies
 - **Java Source/Target Compatibility Version:** 17
-- **Gradle Version:** 8.0
-- **Android Gradle Plugin Version:** 8.0.1
-- **Android Target/Compile SDK:** 33
+- **Gradle Version:** 8.7
+- **Android Gradle Plugin Version:** 8.6.0
+- **Android Target/Compile SDK:** 34
 - **Android Min SDK:** 30
-### Intallation
+### Installation
 To successfully install and utilize the Health App, follow these steps:
 - Obtain a **Google Maps API Key** by creating one at: [console.cloud.google.com](https://console.cloud.google.com/google/maps-apis/)
   - After obtaining the API Key, insert it into **AndroidManifest.xml** at ``com.google.android.geo.API_KEY`` in ``android:value``.
