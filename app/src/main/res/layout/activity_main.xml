@@ -26,14 +26,15 @@
                 />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+<!--    TODO -->
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_no_lightning"
             app:layout_anchor="@id/bottomAppBar"
 
-            android:contentDescription="@string/text_floating_point" />
+            android:contentDescription="@string/text_floating_point" />-->
 
     <FrameLayout
             android:layout_width="match_parent"

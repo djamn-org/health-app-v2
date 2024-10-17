@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         binding.bottomNavigationView.setSelectedItemId(DEFAULT_SELECTED_ITEM_ID); // start position
-        binding.floatingPoint.setOnClickListener(view -> handleFloatingPointClick());
+//        binding.floatingPoint.setOnClickListener(view -> handleFloatingPointClick());     // TODO
 
         // Disables placeholder click in the middle
         MenuItem disabledMenuItem = binding.bottomNavigationView.getMenu().findItem(R.id.placeholder);
