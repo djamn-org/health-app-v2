@@ -13,11 +13,11 @@ sonarqube {
 }
 
 android {
-    namespace 'net.saidijamnig.healthapp'
+    namespace 'net.jamnig.health'
     compileSdk 34
 
     defaultConfig {
-        applicationId "net.saidijamnig.healthapp"
+        applicationId "net.jamnig.health"
         minSdk 30
         targetSdk 34
         versionCode 1
