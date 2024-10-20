@@ -37,7 +37,7 @@ The HealthApp is a comprehensive health and fitness application that empowers us
 ### Installation
 To successfully install and utilize the Health App, follow these steps:
 - Obtain a **Google Maps API Key** by creating one at: [console.cloud.google.com](https://console.cloud.google.com/google/maps-apis/)
-  - After obtaining the API Key, insert it into **AndroidManifest.xml** at ``com.google.android.geo.API_KEY`` in ``android:value``.
+  - After obtaining the API Key, create on top-level the file **secrets.properties**. Add the following value: ``MAPS_API_KEY=<YOUR KEY>``
 - Following **permissions** need to be granted for smooth functioning of the Health App
   - **``ACCESS_COARSE_LOCATION``** & **``ACCESS_FINE_LOCATION``** - Used to determine location for the GPS Tracking System & Compass functionalities
   - **``FOREGROUND_SERVICE``** - Enables sending notifications when a track runs in the background
