@@ -1,12 +1,20 @@
 package net.jamnig.health;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         switchFragments();
+        checkAndRequestNotificationPermission();
     }
 
     @Override
@@ -114,6 +123,51 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+    // TODO rework alertDialog layout and move stuff to permission handler
+    // TODO allgemein nach der reihe die permissions mit alertDialog durchgehen weil derzeit funzt das vergeben nicht richtig
+    private void checkAndRequestNotificationPermission() {
+        // Only request notification permission on API level 33 (Android 13) or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    == PackageManager.PERMISSION_GRANTED) {
+                // Permission is already granted, you can proceed with showing notifications
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
+                // Show rationale and then request permission
+                showNotificationPermissionRationale();
+            } else {
+                // Directly request the permission
+                requestNotificationPermission();
+            }
+        }
+    }
+
+    // Method to request the notification permission
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+        }
+    }
+
+    // Show a rationale dialog to explain why you need the permission
+    private void showNotificationPermissionRationale() {
+        new AlertDialog.Builder(this)
+                .setTitle("Notification Permission Required")
+                .setMessage("This app needs permission to send notifications.")
+                .setPositiveButton("Allow", (dialog, which) -> requestNotificationPermission())
+                .setNegativeButton("Deny", null)
+                .show();
+    }
+
+    // Registering the ActivityResultLauncher to handle the permission request result
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // Permission granted, proceed with notifications
+                } else {
+                    // Permission denied, handle the denial
+                }
+            });
 
     @Override
     protected void onDestroy() {
