@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 7,
+    "identityHash": "fcd097a55da9c1c51630d27acb8195f6",
+    "entities": [
+      {
+        "tableName": "History",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `activity_date` TEXT, `duration_status` TEXT, `activity_distance` TEXT, `activity_type` TEXT, `image_track_name` TEXT, `image_track_full_path` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activityDate",
+            "columnName": "activity_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "durationInMilliSeconds",
+            "columnName": "duration_status",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "activityDistance",
+            "columnName": "activity_distance",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "activityType",
+            "columnName": "activity_type",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "imageTrackName",
+            "columnName": "image_track_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fullImageTrackPath",
+            "columnName": "image_track_full_path",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "uid"
+          ]
+        }
+      },
+      {
+        "tableName": "Health",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `health_water` INTEGER NOT NULL, `health_food` INTEGER NOT NULL, `health_steps` INTEGER NOT NULL, `health_date` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterAmount",
+            "columnName": "health_water",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foodAmount",
+            "columnName": "health_food",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastStepsAmount",
+            "columnName": "health_steps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "health_date",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "uid"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fcd097a55da9c1c51630d27acb8195f6')"
+    ]
+  }
+}
