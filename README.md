@@ -31,8 +31,8 @@ The HealthApp is a comprehensive health and fitness application that empowers us
 ### Dependencies
 - **Java Source/Target Compatibility Version:** 17
 - **Gradle Version:** 8.7
-- **Android Gradle Plugin Version:** 8.6.0
-- **Android Target/Compile SDK:** 34
+- **Android Gradle Plugin Version:** 8.9.0
+- **Android Target/Compile SDK:** 36
 - **Android Min SDK:** 30
 ### Installation
 To successfully install and utilize the Health App, follow these steps:
